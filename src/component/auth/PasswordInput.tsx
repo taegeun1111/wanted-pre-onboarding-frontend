@@ -21,8 +21,6 @@ const PasswordInput = ({onValueChange,validationResult}:Params) => {
     return () => clearTimeout(userInput)
   }, [passwordVal])
 
-  console.log("password에서 넘어오는 validataionResult", validationResult)
-
   const passwordInputHandler = (e :React.FormEvent<HTMLInputElement>) => {
     setPasswordVal(e.currentTarget.value);
   }

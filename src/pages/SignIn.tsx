@@ -2,20 +2,29 @@ import React, {FormEvent, useState} from 'react';
 import EmailInput from "../component/auth/EmailInput";
 import PasswordInput from "../component/auth/PasswordInput";
 import "./sass/SignIn.scss"
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {validateEmail, validatePassword} from "../component/auth/validation";
+import {signIn} from "../apis/auth";
 
 const SignIn = () => {
+  const navigation = useNavigate();
   const [email, setEmail] =useState('')
   const [password, setPassword] = useState('');
   const emailValidation = validateEmail(email);
   const passwordValidation = validatePassword(password);
   const submitHandler = (e: FormEvent) => {
+    const userInfo = {email : email, password :password}
+
     e.preventDefault();
-    console.log("email의 값 : ",email)
-    console.log("pw의 값 : ",password)
-    console.log("Email validation : ",emailValidation)
-    console.log("Password validation : ",passwordValidation)
+    signIn(userInfo)
+      .then((data)=>{
+        console.log("로그인 완료 후 data :",data)
+        alert("로그인이 완료되었습니다. 메인페이지로 이동합니다.")
+        // navigation('/todos')
+      })
+      .catch((error)=>{
+        alert(error)
+      })
   }
 
   return (
@@ -36,6 +45,7 @@ const SignIn = () => {
             className="signIn-btn"
             type="submit"
             data-testid="signin-button"
+            disabled={!emailValidation.result || !passwordValidation.result && true}
           >
             로그인
           </button>
