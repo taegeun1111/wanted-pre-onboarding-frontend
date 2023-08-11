@@ -13,7 +13,7 @@ const SignUp = () => {
       <h1 className="signUp-title">회원가입</h1>
       <form className="signUp-from" onSubmit={submitHandler}>
         {/*<EmailInput/>*/}
-        <PasswordInput/>
+        {/*<PasswordInput/>*/}
 
         <div className="signUp-btn-wrapper">
           <button

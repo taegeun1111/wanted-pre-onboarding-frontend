@@ -1,6 +1,32 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import "../sass/PasswordInput.scss"
-const PasswordInput = () => {
+import {ValidationResult} from "./validation";
+
+type Params = {
+  onValueChange: (value: string) => void;
+  validationResult : ValidationResult;
+}
+const PasswordInput = ({onValueChange,validationResult}:Params) => {
+  const [passwordVal, setPasswordVal] = useState('');
+
+  //Debouncing 설정
+  useEffect(() => {
+    const userInput = setTimeout(() => {
+      console.log(passwordVal);
+      if (passwordVal) {
+        onValueChange(passwordVal);
+
+      }
+    }, 500)
+    return () => clearTimeout(userInput)
+  }, [passwordVal])
+
+  console.log("password에서 넘어오는 validataionResult", validationResult)
+
+  const passwordInputHandler = (e :React.FormEvent<HTMLInputElement>) => {
+    setPasswordVal(e.currentTarget.value);
+  }
+
   return (
     <section className={"password-input-container"}>
 
@@ -9,13 +35,17 @@ const PasswordInput = () => {
         <input
           className="password-input"
           type="password"
+          onKeyUp={passwordInputHandler}
+          defaultValue={''}
           data-testid="password-input"
         />
       </div>
       {/* validate 검증 */}
+      {!validationResult.result &&
       <p className="password-validate">
-        검증값
+        {validationResult.message}
       </p>
+      }
 
     </section>
   );

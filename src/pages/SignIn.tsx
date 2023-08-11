@@ -3,11 +3,19 @@ import EmailInput from "../component/auth/EmailInput";
 import PasswordInput from "../component/auth/PasswordInput";
 import "./sass/SignIn.scss"
 import {Link} from "react-router-dom";
+import {validateEmail, validatePassword} from "../component/auth/validation";
 
 const SignIn = () => {
   const [email, setEmail] =useState('')
+  const [password, setPassword] = useState('');
+  const emailValidation = validateEmail(email);
+  const passwordValidation = validatePassword(password);
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
+    console.log("email의 값 : ",email)
+    console.log("pw의 값 : ",password)
+    console.log("Email validation : ",emailValidation)
+    console.log("Password validation : ",passwordValidation)
   }
 
   return (
@@ -16,9 +24,12 @@ const SignIn = () => {
       <form className="signIn-from" onSubmit={submitHandler}>
         <EmailInput
           onValueChange = {setEmail}
-          value = {email}
+          validationResult = {emailValidation}
         />
-        <PasswordInput/>
+        <PasswordInput
+          onValueChange = {setPassword}
+          validationResult = {passwordValidation}
+        />
 
         <div className="signIn-btn-wrapper">
           <button

@@ -1,15 +1,16 @@
 import React, {useEffect, useRef, useState} from 'react';
 import "../sass/EmailInput.scss";
+import {ValidationResult} from "./validation";
 
 type Params = {
   onValueChange: (value: string) => void;
-  value: string;
+  validationResult : ValidationResult;
 }
 
-const EmailInput = ({onValueChange}: Params) => {
+const EmailInput = ({onValueChange,validationResult}: Params) => {
+    const [emailVal, setEmailVal] = useState('');
 
     //Debouncing 설정
-    const [emailVal, setEmailVal] = useState('');
     useEffect(() => {
       const userInput = setTimeout(() => {
         console.log(emailVal);
@@ -22,8 +23,8 @@ const EmailInput = ({onValueChange}: Params) => {
       return () => clearTimeout(userInput)
     }, [emailVal])
 
-    const emailInputHandler = (event: React.FormEvent<HTMLInputElement>) => {
-      setEmailVal(event.currentTarget.value);
+    const emailInputHandler = (e: React.FormEvent<HTMLInputElement>) => {
+      setEmailVal(e.currentTarget.value);
     };
 
     return (
@@ -41,9 +42,11 @@ const EmailInput = ({onValueChange}: Params) => {
         </div>
 
         {/* validate 검증 */}
-        <p className="email-validate">
-          올바른 이메일 형식입니다.
-        </p>
+        {!validationResult.result &&
+          <p className="email-validate">
+            {validationResult.message}
+          </p>
+        }
 
       </section>
     );
