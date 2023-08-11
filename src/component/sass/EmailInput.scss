@@ -1,0 +1,26 @@
+.email-input-container{
+  margin-bottom: 1rem;
+
+  //이메일 입력 section
+  .email-input-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .email-input-title{
+      padding-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .email-input{
+      font-size: 1.2rem;
+      padding: 0.4rem 0.3rem;
+    }
+  }
+
+  //검증값 section
+  .email-validate{
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+}
