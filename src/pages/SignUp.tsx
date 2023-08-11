@@ -12,7 +12,7 @@ const SignUp = () => {
     <div className="signUp-Container">
       <h1 className="signUp-title">회원가입</h1>
       <form className="signUp-from" onSubmit={submitHandler}>
-        <EmailInput/>
+        {/*<EmailInput/>*/}
         <PasswordInput/>
 
         <div className="signUp-btn-wrapper">
