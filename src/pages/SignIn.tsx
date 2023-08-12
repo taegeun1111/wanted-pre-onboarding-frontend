@@ -8,21 +8,21 @@ import {signIn} from "../apis/auth";
 
 const SignIn = () => {
   const navigation = useNavigate();
-  const [email, setEmail] =useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('');
   const emailValidation = validateEmail(email);
   const passwordValidation = validatePassword(password);
   const submitHandler = async (e: FormEvent) => {
-    const userInfo = {email : email, password :password}
+    const userInfo = {email: email, password: password}
 
     e.preventDefault();
     signIn(userInfo)
-      .then((data)=>{
-        console.log("로그인 완료 후 data :",data)
+      .then((data) => {
+        console.log("로그인 완료 후 data :", data)
         alert("로그인이 완료되었습니다. 메인페이지로 이동합니다.")
         // navigation('/todos')
       })
-      .catch((error)=>{
+      .catch((error) => {
         console.log(error)
         alert(error)
       })
@@ -34,12 +34,12 @@ const SignIn = () => {
       <h1 className="signIn-title">로그인</h1>
       <form className="signIn-from" onSubmit={submitHandler}>
         <EmailInput
-          onValueChange = {setEmail}
-          validationResult = {emailValidation}
+          onValueChange={setEmail}
+          validationResult={emailValidation}
         />
         <PasswordInput
-          onValueChange = {setPassword}
-          validationResult = {passwordValidation}
+          onValueChange={setPassword}
+          validationResult={passwordValidation}
         />
 
         <div className="signIn-btn-wrapper">
