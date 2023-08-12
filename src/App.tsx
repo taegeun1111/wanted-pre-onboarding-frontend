@@ -12,11 +12,14 @@ function App() {
     <BrowserRouter>
       <TokenProvider>
         <Routes>
-          <Route path="/" element={<SignIn/>}/>
+          {/*로그인*/}
           <Route path="/signin" element={<SignIn/>}/>
           <Route path="/signup" element={<SignUp/>}/>
+
+          {/*Todo*/}
           <Route path="/todo" element={<Todo/>}/>
 
+          {/*404*/}
           <Route path="/*" element={<NotFound/>}/>
         </Routes>
       </TokenProvider>
