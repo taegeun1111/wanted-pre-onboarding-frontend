@@ -1,26 +1,23 @@
-import axios, {AxiosError, AxiosResponse} from "axios";
-import {Simulate} from "react-dom/test-utils";
-import error = Simulate.error;
+import axios, {AxiosError} from 'axios';
 
-const url = 'https://www.pre-onboarding-selection-task.shop/'
+type Param = { email: string; password: string };
+type ResponseAuth = { accessToken: string };
 
 const instance = axios.create({
-  baseURL: url
-})
+  // baseURL: 'https://pre-onboarding-selection-task.shop/',
+  baseURL: 'http://localhost:8000',
+});
 
-type Param = { email: string, password: string }
 
 //로그인
-export const signIn = async (userInfo: Param): Promise<any> => {
+export const signIn = async (userInfo: Param): Promise<ResponseAuth> => {
   try {
-    const response = await instance.post('/auth/signIn', userInfo, {
+    const response = await instance.post('/auth/signin', userInfo, {
       headers: {
         'Content-Type': 'application/json',
       },
     });
-    console.log(response)
-    return response.data;
-
+    return {accessToken: response.data.access_token};
   } catch (error) {
     if (axios.isAxiosError(error)) {
       let message;
@@ -30,7 +27,9 @@ export const signIn = async (userInfo: Param): Promise<any> => {
       } else {
         message = error.message;
       }
-      throw new Error(message)
+      throw new Error(message);
+    } else {
+      throw new Error("알 수 없는 에러 발생");
     }
   }
 };
@@ -60,3 +59,5 @@ export const signUp = async (userInfo: Param): Promise<any> => {
     }
   }
 };
+
+

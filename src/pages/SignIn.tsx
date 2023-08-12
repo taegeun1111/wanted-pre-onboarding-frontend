@@ -12,7 +12,7 @@ const SignIn = () => {
   const [password, setPassword] = useState('');
   const emailValidation = validateEmail(email);
   const passwordValidation = validatePassword(password);
-  const submitHandler = (e: FormEvent) => {
+  const submitHandler = async (e: FormEvent) => {
     const userInfo = {email : email, password :password}
 
     e.preventDefault();
@@ -23,8 +23,10 @@ const SignIn = () => {
         // navigation('/todos')
       })
       .catch((error)=>{
+        console.log(error)
         alert(error)
       })
+
   }
 
   return (
