@@ -9,10 +9,11 @@ const TokenProvider: React.FC<{ children: ReactNode }> = ({children}) => {
   const getToken = localStorage.getItem(TOKEN_KEY);
 
   const saveToken = (token: string) => {
-    if (getToken) {
-      localStorage.setItem(TOKEN_KEY, token); // Fix this line
+    console.log("saveToken")
+    // if (token) {
+      localStorage.setItem(TOKEN_KEY, token);
       navigation('/todo');
-    }
+    // }
   };
 
   const removeToken = () => {
