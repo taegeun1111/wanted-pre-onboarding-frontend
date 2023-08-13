@@ -1,6 +1,17 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import "../sass/todo/TodoItem.scss"
-const TodoItem: React.FC<{ todo: string }> = ({todo}) => {
+import {TodoContext} from "../../store/TodoContext";
+
+const TodoItem: React.FC<{ todo: string, id: number }> = ({todo, id}) => {
+  const {removeTodo} = useContext(TodoContext);
+  const todoDeleteHandler = () => {
+    const confirmDelete = window.confirm("정말 삭제하시겠습니까?")
+    if (confirmDelete){
+      removeTodo(id)
+    }
+  }
+
+
   return (
     <li className="todo-list-wrapper">
 
@@ -25,6 +36,7 @@ const TodoItem: React.FC<{ todo: string }> = ({todo}) => {
           type="button"
           className="delete-btn"
           data-testid="delete-button"
+          onClick={todoDeleteHandler}
         >
           삭제
         </button>

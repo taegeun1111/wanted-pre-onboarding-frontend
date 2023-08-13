@@ -11,6 +11,7 @@ const Todos = () => {
         <TodoItem
           key={todo.id}
           todo={todo.todo}
+          id={todo.id}
         />
       ))}
     </ul>
