@@ -1,0 +1,52 @@
+.todo-list-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  height: 2rem;
+  width: 100%;
+
+  //text section
+  .list-main-wrapper {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    overflow: auto;
+
+    .check-box {
+      zoom: 1.5;
+    }
+
+    .todo-text {
+      padding-left: 0.5rem;
+      font-size: 1.2rem;
+    }
+  }
+
+  .list-edit-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 17%;
+    height: 100%;
+
+    .modify-btn,
+    .delete-btn {
+      width: 48%;
+      height: 100%;
+      border : none;
+      cursor: pointer;
+      color: white;
+      border-radius: 0.3rem;
+      font-weight: 600;
+    }
+
+    .modify-btn {
+      background-color: #47bfff;
+    }
+
+    .delete-btn {
+      background-color: #FF6347FF;
+    }
+
+  }
+}

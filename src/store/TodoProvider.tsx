@@ -3,7 +3,6 @@ import {TodoContextObj, TodoContext} from "./TodoContext";
 import {TokenContext} from "./TokenContext";
 import Todo from "../models/TodoData";
 import {addNewTodo, getTodos} from "../apis/todo";
-import {log} from "util";
 
 const TodoProvider: React.FC<{ children: ReactNode }> = ({children}) => {
   const {getToken} = useContext(TokenContext);

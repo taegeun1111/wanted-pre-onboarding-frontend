@@ -8,7 +8,6 @@ import {signIn} from "../apis/auth";
 import {TokenContext} from "../store/TokenContext";
 
 const SignIn = () => {
-  const navigation = useNavigate();
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('');
   const emailValidation = validateEmail(email);

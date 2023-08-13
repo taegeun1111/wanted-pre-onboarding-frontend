@@ -1,8 +1,7 @@
 import React, {useContext} from 'react';
 import {TodoContext} from "../../store/TodoContext";
 import TodoItem from "./TodoItem";
-import Todo from "../../models/TodoData";
-
+import "../sass/todo/Todos.scss"
 const Todos = () => {
   const {todos} = useContext(TodoContext);
 

@@ -1,0 +1,8 @@
+.todo-list-container{
+  display: flex;
+  flex-direction: column;
+  height: 70%;
+  overflow: auto;
+  border-bottom: 2px solid rgb(200,200,200);
+  padding-top: 1rem;
+}

@@ -1,6 +1,5 @@
 import React from 'react';
 import NewTodoForm from "./NewTodoForm";
-import TodoCount from "./TodoCount";
 import '../sass/todo/Header.scss'
 
 const Header = () => {

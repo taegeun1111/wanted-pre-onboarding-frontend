@@ -1,6 +1,5 @@
 import React from 'react';
-import Todo from "../../models/TodoData";
-
+import "../sass/todo/TodoItem.scss"
 const TodoItem: React.FC<{ todo: string }> = ({todo}) => {
   return (
     <li className="todo-list-wrapper">
@@ -8,13 +7,14 @@ const TodoItem: React.FC<{ todo: string }> = ({todo}) => {
       {/* 텍스트 영역 */}
       <div className="list-main-wrapper">
         <input type="checkbox" className="check-box"/>
-        <div className="todo-text">{todo}</div>
+        <h1 className="todo-text">{todo}</h1>
       </div>
 
 
       {/* 수정 삭제 영역 */}
       <div className="list-edit-wrapper">
         <button
+          type="button"
           className="modify-btn"
           data-testid="modify-button"
         >
@@ -22,10 +22,11 @@ const TodoItem: React.FC<{ todo: string }> = ({todo}) => {
         </button>
 
         <button
+          type="button"
           className="delete-btn"
           data-testid="delete-button"
         >
-          수정
+          삭제
         </button>
       </div>
     </li>
