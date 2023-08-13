@@ -2,15 +2,12 @@ import React, {useContext, useRef} from 'react';
 import '../sass/todo/NewTodoForm.scss'
 import {BsPlusLg} from "react-icons/bs"
 import {TodoContext} from "../../store/TodoContext";
-import {TokenContext} from "../../store/TokenContext";
 
 const NewTodoForm = () => {
   const {createTodo} = useContext(TodoContext);
   const inputVal = useRef<HTMLInputElement>(null);
-  const {getToken} = useContext(TokenContext);
   const creatNewTodoHandler = () => {
     const text = inputVal.current!.value;
-    // console.log(text)
     createTodo(text);
   }
 

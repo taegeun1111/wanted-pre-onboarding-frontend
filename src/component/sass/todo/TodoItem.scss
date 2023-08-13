@@ -17,10 +17,20 @@
       zoom: 1.5;
     }
 
-    .todo-text {
+    .todo-text,
+    .modify-input-text{
+      width: 100%;
       padding-left: 0.5rem;
       font-size: 1.2rem;
     }
+
+    .modify-input-text{
+      font-family: 'Noto Sans KR','sans-serif';
+      outline: none;
+      border: none;
+      border-bottom: 1px solid rgb(200,200,200);
+    }
+
   }
 
   .list-edit-wrapper {

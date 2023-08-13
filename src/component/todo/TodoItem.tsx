@@ -3,30 +3,32 @@ import "../sass/todo/TodoItem.scss"
 import {TodoContext} from "../../store/TodoContext";
 import Todo from "../../models/TodoData";
 
-const TodoItem: React.FC<{ todo: Todo}> = ({todo}) => {
-  const [updateShow, setUpdateShow]= useState(false);
-  const {deleteTodo,updateTodo} = useContext(TodoContext);
+const TodoItem: React.FC<{ todo: Todo }> = ({todo}) => {
+  const [updateShow, setUpdateShow] = useState(false);
+  const {deleteTodo, updateTodo} = useContext(TodoContext);
   const todoDeleteHandler = () => {
     const confirmDelete = window.confirm("정말 삭제하시겠습니까?")
-    if (confirmDelete){
+    if (confirmDelete) {
       deleteTodo(todo.id)
     }
   }
 
-  const checkedHandler = (e:React.ChangeEvent<HTMLInputElement>) =>{
+  const checkedHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     updateTodo({
-      ...todo, isCompleted : e.target.checked
+      ...todo, isCompleted: e.target.checked
     })
   }
 
-  const updateShowHandler = () =>{
+  const updateShowHandler = () => {
+    setUpdateShow(!updateShow);
+  }
+
+  const updateTodoHandler = () => {
 
   }
 
   return (
     <li className="todo-list-wrapper">
-
-      {/* 텍스트 영역 */}
       <div className="list-main-wrapper">
         <input
           type="checkbox"
@@ -34,30 +36,68 @@ const TodoItem: React.FC<{ todo: Todo}> = ({todo}) => {
           defaultChecked={todo.isCompleted}
           onChange={checkedHandler}
         />
-        <h1 className="todo-text">{todo.todo}</h1>
+        {!updateShow
+          ?
+          <h1 className="todo-text">
+            {todo.todo}
+          </h1>
+          :
+          <input
+            className="modify-input-text"
+            type="text"
+            data-testid="modify-input"
+            defaultValue={todo.todo}
+            autoFocus={true}
+          />
+        }
+
       </div>
 
+      {/* 기존 list section */}
+      {!updateShow &&
+        <div className="list-edit-wrapper">
+          <button
+            type="button"
+            className="modify-btn"
+            data-testid="modify-button"
+            onClick={updateShowHandler}
+          >
+            수정
+          </button>
 
-      {/* 수정 삭제 영역 */}
-      <div className="list-edit-wrapper">
-        <button
-          type="button"
-          className="modify-btn"
-          data-testid="modify-button"
-          onClick={updateShowHandler}
-        >
-          수정
-        </button>
+          <button
+            type="button"
+            className="delete-btn"
+            data-testid="delete-button"
+            onClick={todoDeleteHandler}
+          >
+            삭제
+          </button>
+        </div>
+      }
 
-        <button
-          type="button"
-          className="delete-btn"
-          data-testid="delete-button"
-          onClick={todoDeleteHandler}
-        >
-          삭제
-        </button>
-      </div>
+      {/* 수정 list section */}
+      {updateShow &&
+        <div className="list-edit-wrapper">
+          <button
+            type="button"
+            className="modify-btn"
+            data-testid="submit-button"
+            onClick={updateTodoHandler}
+          >
+            제출
+          </button>
+
+          <button
+            type="button"
+            className="delete-btn"
+            data-testid="cancel-button"
+            onClick={updateShowHandler}
+          >
+            취소
+          </button>
+        </div>
+      }
     </li>
   );
 };
