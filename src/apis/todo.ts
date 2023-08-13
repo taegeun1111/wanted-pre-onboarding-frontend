@@ -1,14 +1,11 @@
 import {instance} from "./index";
 import axios from "axios";
 import Todo from "../models/TodoData";
-import {types} from "sass";
-import Null = types.Null;
 
-type Param = { text: string, getToken: string }
+type createParam = { text: string, getToken: string }
+type updateParam = { id: number, todo: string, isCompleted: boolean, token: string }
 
-export const creatTodo = async (textWithToken: Param): Promise<Todo> => {
-  console.log(`text : ${textWithToken.text}`)
-
+export const creatTodo = async (textWithToken: createParam): Promise<Todo> => {
   try {
     const response = await instance.post('/todos', {todo: textWithToken.text}, {
       headers: {
@@ -33,7 +30,7 @@ export const creatTodo = async (textWithToken: Param): Promise<Todo> => {
 };
 
 
-export const getTodos = async (token: string) : Promise<Todo[]> => {
+export const getTodos = async (token: string): Promise<Todo[]> => {
   try {
     const response = await instance.get('/todos', {
       headers: {
@@ -56,10 +53,38 @@ export const getTodos = async (token: string) : Promise<Todo[]> => {
   }
 };
 
-export const deleteTodo = async (id: number, token:string): Promise<void> => {
+export const updateTodo = async(updateData:updateParam): Promise<Todo[] | undefined> => {
+  const data = {todo : updateData.todo, isCompleted : updateData.isCompleted}
+  console.log(updateData)
   try {
-    const response = await instance.delete(`/todos/${id}`,{
-      headers : {
+    const response = await instance.put(`/todos/${updateData.id}`,data,{
+      headers: {
+        Authorization: `Bearer ${updateData.token}`,
+        'Content-Type': 'application/json'
+      }
+    })
+    if (response.status === 200){
+      return response.data;
+    }
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      let message;
+      if (error.response) {
+        message = error.response.data.message;
+      } else {
+        message = error.message;
+      }
+      throw new Error(message);
+    } else {
+      throw new Error("알 수 없는 에러 발생");
+    }
+  }
+}
+
+export const deleteTodo = async (id: number, token: string): Promise<void> => {
+  try {
+    await instance.delete(`/todos/${id}`, {
+      headers: {
         Authorization: `Bearer ${token}`
       }
     })
@@ -77,3 +102,4 @@ export const deleteTodo = async (id: number, token:string): Promise<void> => {
     }
   }
 }
+

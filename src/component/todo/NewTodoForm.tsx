@@ -5,13 +5,13 @@ import {TodoContext} from "../../store/TodoContext";
 import {TokenContext} from "../../store/TokenContext";
 
 const NewTodoForm = () => {
-  const {addTodo} = useContext(TodoContext);
+  const {createTodo} = useContext(TodoContext);
   const inputVal = useRef<HTMLInputElement>(null);
   const {getToken} = useContext(TokenContext);
   const creatNewTodoHandler = () => {
     const text = inputVal.current!.value;
     // console.log(text)
-    addTodo(text);
+    createTodo(text);
   }
 
   return (

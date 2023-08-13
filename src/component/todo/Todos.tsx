@@ -10,8 +10,7 @@ const Todos = () => {
       {todos.map((todo) => (
         <TodoItem
           key={todo.id}
-          todo={todo.todo}
-          id={todo.id}
+          todo={todo}
         />
       ))}
     </ul>

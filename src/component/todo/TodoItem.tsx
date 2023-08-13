@@ -1,24 +1,40 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import "../sass/todo/TodoItem.scss"
 import {TodoContext} from "../../store/TodoContext";
+import Todo from "../../models/TodoData";
 
-const TodoItem: React.FC<{ todo: string, id: number }> = ({todo, id}) => {
-  const {removeTodo} = useContext(TodoContext);
+const TodoItem: React.FC<{ todo: Todo}> = ({todo}) => {
+  const [updateShow, setUpdateShow]= useState(false);
+  const {deleteTodo,updateTodo} = useContext(TodoContext);
   const todoDeleteHandler = () => {
     const confirmDelete = window.confirm("정말 삭제하시겠습니까?")
     if (confirmDelete){
-      removeTodo(id)
+      deleteTodo(todo.id)
     }
   }
 
+  const checkedHandler = (e:React.ChangeEvent<HTMLInputElement>) =>{
+    updateTodo({
+      ...todo, isCompleted : e.target.checked
+    })
+  }
+
+  const updateShowHandler = () =>{
+
+  }
 
   return (
     <li className="todo-list-wrapper">
 
       {/* 텍스트 영역 */}
       <div className="list-main-wrapper">
-        <input type="checkbox" className="check-box"/>
-        <h1 className="todo-text">{todo}</h1>
+        <input
+          type="checkbox"
+          className="check-box"
+          defaultChecked={todo.isCompleted}
+          onChange={checkedHandler}
+        />
+        <h1 className="todo-text">{todo.todo}</h1>
       </div>
 
 
@@ -28,6 +44,7 @@ const TodoItem: React.FC<{ todo: string, id: number }> = ({todo, id}) => {
           type="button"
           className="modify-btn"
           data-testid="modify-button"
+          onClick={updateShowHandler}
         >
           수정
         </button>
