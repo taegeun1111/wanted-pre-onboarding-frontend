@@ -1,6 +1,6 @@
 import React, {FormEvent, useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
-import "./sass/SignUp.scss"
+import "./sass/auth/SignUp.scss"
 import {validateEmail, validatePassword} from "../component/auth/validation";
 import EmailInput from "../component/auth/EmailInput";
 import PasswordInput from "../component/auth/PasswordInput";

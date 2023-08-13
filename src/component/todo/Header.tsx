@@ -1,9 +1,15 @@
 import React from 'react';
+import NewTodoForm from "./NewTodoForm";
+import TodoCount from "./TodoCount";
+import '../sass/todo/Header.scss'
 
 const Header = () => {
   return (
-    <header>
-    header
+    <header className="header-container">
+
+      <h1 className="header-title">TODO LIST</h1>
+
+      <NewTodoForm/>
     </header>
   );
 };

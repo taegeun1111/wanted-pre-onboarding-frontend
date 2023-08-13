@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import "../sass/EmailInput.scss";
+import "../sass/auth/EmailInput.scss";
 import {ValidationResult} from "./validation";
 
 type Params = {

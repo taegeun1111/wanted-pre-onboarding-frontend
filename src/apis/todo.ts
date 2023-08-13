@@ -5,14 +5,16 @@ import Todo from "../models/TodoData";
 type Param = {text : string, getToken : string}
 
 export const addNewTodo = async (textWithToken : Param):Promise<Todo> => {
+  console.log(`text : ${textWithToken.text}`)
+
   try {
-    const response = await instance.post('/todos',textWithToken.text,{
+    const response = await instance.post('/todos', {todo : textWithToken.text},{
       headers: {
         Authorization: `Bearer ${textWithToken.getToken}`,
         'Content-Type': 'application/json',
       },
     })
-    return response.data
+    return response.data;
   }catch (error) {
     if (axios.isAxiosError(error)) {
       let message;

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import "../sass/PasswordInput.scss"
+import "../sass/auth/PasswordInput.scss"
 import {ValidationResult} from "./validation";
 
 type Params = {
@@ -12,7 +12,7 @@ const PasswordInput = ({onValueChange,validationResult}:Params) => {
   //Debouncing 설정
   useEffect(() => {
     const userInput = setTimeout(() => {
-      console.log(passwordVal);
+      // console.log(passwordVal);
       if (passwordVal) {
         onValueChange(passwordVal);
 
