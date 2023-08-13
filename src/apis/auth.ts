@@ -1,13 +1,8 @@
-import axios, {AxiosError} from 'axios';
+import axios from 'axios';
+import {instance} from "./index";
 
 type Param = { email: string; password: string };
 type ResponseAuth = { accessToken: string };
-
-const instance = axios.create({
-  // baseURL: 'https://pre-onboarding-selection-task.shop/',
-  baseURL: 'http://localhost:8000',
-});
-
 
 //로그인
 export const signIn = async (userInfo: Param): Promise<ResponseAuth> => {
@@ -22,8 +17,7 @@ export const signIn = async (userInfo: Param): Promise<ResponseAuth> => {
     if (axios.isAxiosError(error)) {
       let message;
       if (error.response) {
-        const errorMessage = error.response.data.message;
-        message = errorMessage;
+        message = error.response.data.message;
       } else {
         message = error.message;
       }

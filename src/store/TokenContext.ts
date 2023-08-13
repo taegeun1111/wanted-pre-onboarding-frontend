@@ -1,16 +1,14 @@
 import React from "react";
 
-type TokenContextObj = {
+export type TokenContextObj = {
   getToken: string | null;
   saveToken: (token: string) => void;
-  removeToken : () => void;
-}
+  removeToken: () => void;
+};
 
-const TokenContext = React.createContext<TokenContextObj>({
-  getToken : null,
-  saveToken : (token : string) => {},
-  removeToken : () => {}
-  }
-)
+export const TokenContext = React.createContext<TokenContextObj>({
+  getToken: null,
+  saveToken: (token: string) => {},
+  removeToken: () => {}
+});
 
-export default TokenContext;

@@ -3,7 +3,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Todo from "./pages/Todo";
-import NotFound from "./pages/notFound/NotFound";
+import NotFound from "./pages/NotFound";
 import TokenProvider from "./store/TokenProvider";
 
 function App() {

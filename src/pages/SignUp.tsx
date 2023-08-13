@@ -5,7 +5,6 @@ import {validateEmail, validatePassword} from "../component/auth/validation";
 import EmailInput from "../component/auth/EmailInput";
 import PasswordInput from "../component/auth/PasswordInput";
 import {signUp} from "../apis/auth";
-import {Simulate} from "react-dom/test-utils";
 
 const SignUp = () => {
   const navigation = useNavigate();

@@ -5,7 +5,7 @@ import "./sass/SignIn.scss"
 import {Link, useNavigate} from "react-router-dom";
 import {validateEmail, validatePassword} from "../component/auth/validation";
 import {signIn} from "../apis/auth";
-import TokenContext from "../store/TokenContext";
+import {TokenContext} from "../store/TokenContext";
 
 const SignIn = () => {
   const navigation = useNavigate();

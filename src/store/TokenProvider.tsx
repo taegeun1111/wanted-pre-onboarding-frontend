@@ -1,6 +1,6 @@
 import React, {ReactNode, useEffect} from "react";
 import {useNavigate} from "react-router-dom";
-import TokenContext from "./TokenContext";
+import {TokenContextObj, TokenContext} from "./TokenContext";
 
 const TOKEN_KEY = 'accessToken';
 
@@ -30,9 +30,14 @@ const TokenProvider: React.FC<{ children: ReactNode }> = ({children}) => {
     // navigation('/signin');
   };
 
+  const TokenContextValue : TokenContextObj = {
+    getToken,
+    saveToken,
+    removeToken
+  }
 
   return (
-    <TokenContext.Provider value={{getToken, saveToken, removeToken}}>
+    <TokenContext.Provider value={TokenContextValue}>
       {children}
     </TokenContext.Provider>
   );
