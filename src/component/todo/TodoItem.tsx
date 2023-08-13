@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useRef, useState} from 'react';
 import "../sass/todo/TodoItem.scss"
 import {TodoContext} from "../../store/TodoContext";
 import Todo from "../../models/TodoData";
@@ -6,6 +6,8 @@ import Todo from "../../models/TodoData";
 const TodoItem: React.FC<{ todo: Todo }> = ({todo}) => {
   const [updateShow, setUpdateShow] = useState(false);
   const {deleteTodo, updateTodo} = useContext(TodoContext);
+  const inputVal = useRef<HTMLInputElement>(null);
+
   const todoDeleteHandler = () => {
     const confirmDelete = window.confirm("정말 삭제하시겠습니까?")
     if (confirmDelete) {
@@ -24,7 +26,12 @@ const TodoItem: React.FC<{ todo: Todo }> = ({todo}) => {
   }
 
   const updateTodoHandler = () => {
-
+      const updateText = inputVal.current!.value;
+      updateTodo({
+        ...todo, todo : updateText
+      })
+    alert('수정이 완료되었습니다.')
+    setUpdateShow(!updateShow);
   }
 
   return (
@@ -47,6 +54,7 @@ const TodoItem: React.FC<{ todo: Todo }> = ({todo}) => {
             type="text"
             data-testid="modify-input"
             defaultValue={todo.todo}
+            ref={inputVal}
             autoFocus={true}
           />
         }

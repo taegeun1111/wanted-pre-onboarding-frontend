@@ -2,13 +2,18 @@
   display: flex;
   align-items: end;
   justify-content: space-between;
+  padding-top: 1.3rem;
 
     .logout-btn{
+      display: flex;
       font-size: 1rem;
       cursor: pointer;
+
+      .logout-icon{
+        padding-left: 0.3rem;
+      }
     }
     .logout-btn:hover{
       color: #003af5;
-
     }
 }
