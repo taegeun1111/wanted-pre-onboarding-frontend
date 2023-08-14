@@ -15,7 +15,7 @@ const SignIn = () => {
   const passwordValidation = validatePassword(password);
   const validateEnable = emailValidation.result && passwordValidation.result;
 
-  const {saveToken, getToken} = useContext(TokenContext);
+  const {saveToken} = useContext(TokenContext);
   const submitHandler = async (e: FormEvent) => {
     // 사용자 입력 값
     const userInfo = {email: email, password: password}

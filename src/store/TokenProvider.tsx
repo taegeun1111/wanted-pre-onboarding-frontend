@@ -1,4 +1,4 @@
-import React, {ReactNode, useEffect, useState} from "react";
+import React, {ReactNode} from "react";
 import {useNavigate} from "react-router-dom";
 import {TokenContextObj, TokenContext} from "./TokenContext";
 
