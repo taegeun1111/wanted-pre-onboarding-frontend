@@ -19,7 +19,7 @@ const PasswordInput = ({onValueChange,validationResult}:Params) => {
       }
     }, 500)
     return () => clearTimeout(userInput)
-  }, [passwordVal])
+  }, [passwordVal,onValueChange])
 
   const passwordInputHandler = (e :React.FormEvent<HTMLInputElement>) => {
     setPasswordVal(e.currentTarget.value);

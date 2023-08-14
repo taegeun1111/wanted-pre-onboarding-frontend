@@ -5,13 +5,24 @@ import Todo from "../../models/TodoData";
 
 const TodoItem: React.FC<{ todo: Todo }> = ({todo}) => {
   const [updateShow, setUpdateShow] = useState(false);
+  const [clickEnabled, setClickEnabled] = useState(true);
   const {deleteTodo, updateTodo} = useContext(TodoContext);
   const inputVal = useRef<HTMLInputElement>(null);
 
-  const todoDeleteHandler = () => {
-    const confirmDelete = window.confirm("정말 삭제하시겠습니까?")
-    if (confirmDelete) {
-      deleteTodo(todo.id)
+  const todoDeleteHandler = async () => {
+    if (clickEnabled) {
+      const confirmDelete = window.confirm("정말 삭제하시겠습니까?")
+      if (confirmDelete) {
+        try {
+          setClickEnabled(false);
+          await deleteTodo(todo.id)
+          setClickEnabled(true);
+        }catch (error){
+          alert(error)
+          setClickEnabled(true)
+        }
+
+      }
     }
   }
 
@@ -25,7 +36,7 @@ const TodoItem: React.FC<{ todo: Todo }> = ({todo}) => {
     setUpdateShow(!updateShow);
   }
 
-  const handleUpdate = () =>{
+  const handleUpdate = () => {
     const updateText = inputVal.current!.value;
     if (updateText.trim().length > 0) {
       updateTodo({
@@ -33,7 +44,7 @@ const TodoItem: React.FC<{ todo: Todo }> = ({todo}) => {
       })
       alert('수정이 완료되었습니다.')
       setUpdateShow(!updateShow);
-    }else {
+    } else {
       alert('공백은 불가합니다.')
     }
   }
@@ -42,7 +53,7 @@ const TodoItem: React.FC<{ todo: Todo }> = ({todo}) => {
     handleUpdate()
   }
 
-  const keyUpHandler = (e:React.KeyboardEvent<HTMLInputElement>) => {
+  const keyUpHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') handleUpdate()
   }
 
@@ -90,6 +101,7 @@ const TodoItem: React.FC<{ todo: Todo }> = ({todo}) => {
             type="button"
             className="delete-btn"
             data-testid="delete-button"
+            disabled={!clickEnabled}
             onClick={todoDeleteHandler}
           >
             삭제

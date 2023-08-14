@@ -10,6 +10,7 @@ const NewTodoForm = () => {
   const handleCreate = () => {
     const text = inputVal.current!.value;
     if (text.trim().length > 0){
+      alert('등록완료')
       createTodo(text);
       inputVal.current!.value = ''
     }else {
@@ -22,7 +23,7 @@ const NewTodoForm = () => {
   }
 
   const keyUpHandler = (e:React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') handleCreate()
+    if (e.key === 'Enter') {handleCreate()}
   }
 
   return (
