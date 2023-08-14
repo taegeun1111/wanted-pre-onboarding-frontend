@@ -9,23 +9,16 @@ type Params = {
 
 const EmailInput = ({onValueChange,validationResult}: Params) => {
     const [emailVal, setEmailVal] = useState('');
-
-    //Debouncing 설정
-    useEffect(() => {
-      const userInput = setTimeout(() => {
-        console.log(emailVal);
-        if (emailVal) {
-          onValueChange(emailVal);
-
-        }
-      }, 500)
-
-      return () => clearTimeout(userInput)
-    }, [emailVal])
+    const [showValidation,setShowValidation] = useState(false);
 
     const emailInputHandler = (e: React.FormEvent<HTMLInputElement>) => {
       setEmailVal(e.currentTarget.value);
     };
+
+    const showValidationHandler = () => {
+      onValueChange(emailVal)
+      setShowValidation(true)
+    }
 
     return (
       <section className="email-input-container">
@@ -34,15 +27,17 @@ const EmailInput = ({onValueChange,validationResult}: Params) => {
           <input
             className="email-input"
             type="email"
+            placeholder="test@test.com"
             onKeyUp={emailInputHandler}
             defaultValue={''}
             autoFocus={true}
+            onBlur={showValidationHandler}
             data-testid="email-input"
           />
         </div>
 
         {/* validate 검증 */}
-        {!validationResult.result &&
+        {!validationResult.result && showValidation &&
           <p className="email-validate">
             {validationResult.message}
           </p>

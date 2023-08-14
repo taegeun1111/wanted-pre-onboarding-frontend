@@ -8,21 +8,25 @@ type Params = {
 }
 const PasswordInput = ({onValueChange,validationResult}:Params) => {
   const [passwordVal, setPasswordVal] = useState('');
+  const [showValidation,setShowValidation] = useState(false);
 
   //Debouncing 설정
-  useEffect(() => {
-    const userInput = setTimeout(() => {
-      // console.log(passwordVal);
-      if (passwordVal) {
-        onValueChange(passwordVal);
-
-      }
-    }, 500)
-    return () => clearTimeout(userInput)
-  }, [passwordVal])
+  // useEffect(() => {
+  //   const userInput = setTimeout(() => {
+  //     if (passwordVal) {
+  //       onValueChange(passwordVal);
+  //     }
+  //   }, 300)
+  //   return () => clearTimeout(userInput)
+  // }, [passwordVal])
 
   const passwordInputHandler = (e :React.FormEvent<HTMLInputElement>) => {
     setPasswordVal(e.currentTarget.value);
+  }
+
+  const showValidationHandler = () => {
+    onValueChange(passwordVal)
+    setShowValidation(true)
   }
 
   return (
@@ -33,13 +37,15 @@ const PasswordInput = ({onValueChange,validationResult}:Params) => {
         <input
           className="password-input"
           type="password"
+          placeholder="********"
           onKeyUp={passwordInputHandler}
           defaultValue={''}
+          onBlur={showValidationHandler}
           data-testid="password-input"
         />
       </div>
       {/* validate 검증 */}
-      {!validationResult.result &&
+      {!validationResult.result && showValidation &&
       <p className="password-validate">
         {validationResult.message}
       </p>

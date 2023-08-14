@@ -2,7 +2,7 @@ import React, {FormEvent, useContext, useState} from 'react';
 import EmailInput from "../component/auth/EmailInput";
 import PasswordInput from "../component/auth/PasswordInput";
 import "./sass/auth/SignIn.scss"
-import {Link, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {validateEmail, validatePassword} from "../component/auth/validation";
 import {signIn} from "../apis/auth";
 import {TokenContext} from "../store/TokenContext";
