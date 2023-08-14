@@ -25,13 +25,25 @@ const TodoItem: React.FC<{ todo: Todo }> = ({todo}) => {
     setUpdateShow(!updateShow);
   }
 
-  const updateTodoHandler = () => {
-      const updateText = inputVal.current!.value;
+  const handleUpdate = () =>{
+    const updateText = inputVal.current!.value;
+    if (updateText.trim().length > 0) {
       updateTodo({
-        ...todo, todo : updateText
+        ...todo, todo: updateText
       })
-    alert('수정이 완료되었습니다.')
-    setUpdateShow(!updateShow);
+      alert('수정이 완료되었습니다.')
+      setUpdateShow(!updateShow);
+    }else {
+      alert('공백은 불가합니다.')
+    }
+  }
+
+  const updateTodoHandler = () => {
+    handleUpdate()
+  }
+
+  const keyUpHandler = (e:React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') handleUpdate()
   }
 
   return (
@@ -54,6 +66,7 @@ const TodoItem: React.FC<{ todo: Todo }> = ({todo}) => {
             type="text"
             data-testid="modify-input"
             defaultValue={todo.todo}
+            onKeyUp={keyUpHandler}
             ref={inputVal}
             autoFocus={true}
           />

@@ -6,7 +6,8 @@ import {TodoContext} from "../../store/TodoContext";
 const NewTodoForm = () => {
   const {createTodo} = useContext(TodoContext);
   const inputVal = useRef<HTMLInputElement>(null);
-  const creatNewTodoHandler = () => {
+
+  const handleCreate = () => {
     const text = inputVal.current!.value;
     if (text.trim().length > 0){
       createTodo(text);
@@ -14,19 +15,14 @@ const NewTodoForm = () => {
     }else {
       alert('공백은 등록이 불가합니다!')
     }
+  }
 
+  const creatNewTodoHandler = () => {
+    handleCreate()
   }
 
   const keyUpHandler = (e:React.KeyboardEvent<HTMLInputElement>) => {
-    const text = inputVal.current!.value;
-    if (e.key === 'Enter'){
-      if (text.trim().length > 0){
-        createTodo(text);
-        inputVal.current!.value = ''
-      }else {
-        alert('공백은 등록이 불가합니다!')
-      }
-    }
+    if (e.key === 'Enter') handleCreate()
   }
 
   return (

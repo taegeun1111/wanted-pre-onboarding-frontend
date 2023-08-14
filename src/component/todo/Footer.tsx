@@ -6,7 +6,11 @@ import {TokenContext} from "../../store/TokenContext";
 const Footer = () => {
   const {removeToken} = useContext(TokenContext);
   const logoutHandler = () =>{
-    removeToken()
+    const confirmLogout = window.confirm("정말 로그아웃 하시겠습니까?")
+    if (confirmLogout){
+      removeToken()
+    }
+
   }
 
   return (
