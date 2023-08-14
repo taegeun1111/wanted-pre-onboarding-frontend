@@ -10,10 +10,12 @@ import {TokenContext} from "../store/TokenContext";
 const SignIn = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('');
+  //입력값 검증
   const emailValidation = validateEmail(email);
   const passwordValidation = validatePassword(password);
+  const validateEnable = emailValidation.result && passwordValidation.result;
 
-  const {saveToken,getToken} = useContext(TokenContext);
+  const {saveToken, getToken} = useContext(TokenContext);
   const submitHandler = async (e: FormEvent) => {
     // 사용자 입력 값
     const userInfo = {email: email, password: password}
@@ -52,10 +54,10 @@ const SignIn = () => {
 
         <div className="signIn-btn-wrapper">
           <button
-            className="signIn-btn"
+            className={validateEnable ? 'signIn-activate-btn' : 'disable'}
             type="submit"
             data-testid="signin-button"
-            disabled={!emailValidation.result || !passwordValidation.result && true}
+            disabled={!validateEnable}
           >
             로그인
           </button>

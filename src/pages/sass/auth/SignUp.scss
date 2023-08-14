@@ -2,7 +2,7 @@
   background-color: white;
   padding: 2rem 2.5rem;
   border-radius: 0.5rem;
-  width: 30%;
+  width: 25%;
   box-shadow: 3px 3px 3px 3px rgba(200, 200, 200, 0.5);
 
   .signUp-title {
@@ -20,16 +20,25 @@
       align-items: center;
       flex-direction: column;
 
-      .signUp-btn {
+      .signUp-activate-btn,
+      .disable{
         width: 100%;
         font-size: 1rem;
         padding: 0.5rem 1rem;
-        background-color: #003af5;
         border: none;
-        color: white;
         border-radius: 0.3rem;
         margin-bottom: 1rem;
+
+      }
+
+      .signUp-activate-btn {
+        background-color: #003af5;
+        color: white;
         cursor: pointer;
+      }
+      .disable{
+        background-color: rgb(200,200,200);
+        color: white;
       }
 
       .link-btn{

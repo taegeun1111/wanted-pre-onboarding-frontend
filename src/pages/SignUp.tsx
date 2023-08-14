@@ -8,22 +8,23 @@ import {signUp} from "../apis/auth";
 
 const SignUp = () => {
   const navigation = useNavigate();
-  const [email, setEmail] =useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('');
+  // 입력값 검증
   const emailValidation = validateEmail(email);
   const passwordValidation = validatePassword(password);
-
+  const validateEnable = emailValidation.result && passwordValidation.result;
 
   const submitHandler = (e: FormEvent) => {
-    const userInfo = {email : email, password :password}
+    const userInfo = {email: email, password: password}
 
     e.preventDefault();
     signUp(userInfo)
-      .then(()=>{
+      .then(() => {
         alert("회원가입이 완료되었습니다. 로그인 페이지로 이동합니다.")
         navigation('/signin')
       })
-      .catch((error)=>{
+      .catch((error) => {
         alert(error)
       })
 
@@ -34,20 +35,20 @@ const SignUp = () => {
       <h1 className="signUp-title">회원가입</h1>
       <form className="signUp-from" onSubmit={submitHandler}>
         <EmailInput
-          onValueChange = {setEmail}
-          validationResult = {emailValidation}
+          onValueChange={setEmail}
+          validationResult={emailValidation}
         />
         <PasswordInput
-          onValueChange = {setPassword}
-          validationResult = {passwordValidation}
+          onValueChange={setPassword}
+          validationResult={passwordValidation}
         />
 
         <div className="signUp-btn-wrapper">
           <button
-            className="signUp-btn"
+            className={validateEnable ? 'signUp-activate-btn' : 'disable'}
             type="submit"
             data-testid="signUp-button"
-            disabled={!emailValidation.result || !passwordValidation.result && true}
+            disabled={!validateEnable}
           >
             회원가입
           </button>
