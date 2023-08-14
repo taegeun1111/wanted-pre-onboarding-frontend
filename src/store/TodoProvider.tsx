@@ -8,6 +8,7 @@ import {
   getTodos as getTodosApi,
   updateTodo as updateTodoApi
 } from "../apis/todo";
+import axios from 'axios';
 
 const TodoProvider: React.FC<{ children: ReactNode }> = ({children}) => {
   const {getToken} = useContext(TokenContext);
@@ -31,8 +32,16 @@ const TodoProvider: React.FC<{ children: ReactNode }> = ({children}) => {
         try {
           await fetchTodos();
         } catch (error) {
-          console.error("Error fetching todos:", error);
-          // 에러 처리 로직 추가
+          if (axios.isAxiosError(error)) {
+            let message;
+            if (error.response) {
+              const errorMessage = error.response.data.message;
+              message = errorMessage;
+            } else {
+              message = error.message;
+            }
+            throw new Error(message)
+          }
         }
       };
 
@@ -50,7 +59,6 @@ const TodoProvider: React.FC<{ children: ReactNode }> = ({children}) => {
 
   const deleteTodo = async (id: number) => {
     if (getToken) {
-      console.log(getToken)
       await deleteTodoApi(id, getToken)
       await fetchTodos();
     }

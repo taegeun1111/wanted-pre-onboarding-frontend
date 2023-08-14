@@ -8,11 +8,6 @@ const TokenProvider: React.FC<{ children: ReactNode }> = ({children}) => {
   const navigation = useNavigate();
   const getToken = localStorage.getItem(TOKEN_KEY);
 
-  useEffect(()=>{
-    console.log('Provider에서 getToken의 값 : ',getToken);
-    console.log('Provider에서 isLogin의 값 : ',isLogin());
-  },[getToken])
-
   const saveToken = (token: string) => {
     localStorage.setItem(TOKEN_KEY, token);
     navigation('/todo');

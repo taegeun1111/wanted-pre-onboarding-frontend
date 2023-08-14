@@ -47,7 +47,7 @@ const SignUp = () => {
           <button
             className={validateEnable ? 'signUp-activate-btn' : 'disable'}
             type="submit"
-            data-testid="signUp-button"
+            data-testid="signup-button"
             disabled={!validateEnable}
           >
             회원가입

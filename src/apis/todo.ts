@@ -55,7 +55,6 @@ export const getTodos = async (token: string): Promise<Todo[]> => {
 
 export const updateTodo = async(updateData:updateParam): Promise<Todo[] | undefined> => {
   const data = {todo : updateData.todo, isCompleted : updateData.isCompleted}
-  console.log(updateData)
   try {
     const response = await instance.put(`/todos/${updateData.id}`,data,{
       headers: {
