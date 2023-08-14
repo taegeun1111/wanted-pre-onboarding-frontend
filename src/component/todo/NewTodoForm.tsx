@@ -35,7 +35,7 @@ const NewTodoForm = () => {
         className="new-todo-input"
         data-testid="new-todo-input"
         ref={inputVal}
-        placeholder="우측 버튼이나 엔터키를 눌려주세요!"
+        placeholder="입력 후 우측 버튼이나 엔터키를 눌려주세요!"
         onKeyUp={keyUpHandler}
       />
 
