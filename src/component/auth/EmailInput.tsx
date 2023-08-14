@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import "../sass/auth/EmailInput.scss";
 import {ValidationResult} from "./validation";
 
@@ -33,6 +33,7 @@ const EmailInput = ({onValueChange,validationResult}: Params) => {
             autoFocus={true}
             onBlur={showValidationHandler}
             data-testid="email-input"
+            autoComplete="current-password"
           />
         </div>
 

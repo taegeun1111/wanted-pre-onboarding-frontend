@@ -10,15 +10,16 @@ const PasswordInput = ({onValueChange,validationResult}:Params) => {
   const [passwordVal, setPasswordVal] = useState('');
   const [showValidation,setShowValidation] = useState(false);
 
-  //Debouncing 설정
-  // useEffect(() => {
-  //   const userInput = setTimeout(() => {
-  //     if (passwordVal) {
-  //       onValueChange(passwordVal);
-  //     }
-  //   }, 300)
-  //   return () => clearTimeout(userInput)
-  // }, [passwordVal])
+  // Debouncing 설정
+  useEffect(() => {
+    const userInput = setTimeout(() => {
+      if (passwordVal.length >= 8) {
+        onValueChange(passwordVal);
+        setShowValidation(true)
+      }
+    }, 500)
+    return () => clearTimeout(userInput)
+  }, [passwordVal])
 
   const passwordInputHandler = (e :React.FormEvent<HTMLInputElement>) => {
     setPasswordVal(e.currentTarget.value);
@@ -42,6 +43,7 @@ const PasswordInput = ({onValueChange,validationResult}:Params) => {
           defaultValue={''}
           onBlur={showValidationHandler}
           data-testid="password-input"
+          autoComplete="current-password"
         />
       </div>
       {/* validate 검증 */}

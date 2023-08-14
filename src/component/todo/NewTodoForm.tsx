@@ -8,7 +8,25 @@ const NewTodoForm = () => {
   const inputVal = useRef<HTMLInputElement>(null);
   const creatNewTodoHandler = () => {
     const text = inputVal.current!.value;
-    createTodo(text);
+    if (text.trim().length > 0){
+      createTodo(text);
+      inputVal.current!.value = ''
+    }else {
+      alert('공백은 등록이 불가합니다!')
+    }
+
+  }
+
+  const keyUpHandler = (e:React.KeyboardEvent<HTMLInputElement>) => {
+    const text = inputVal.current!.value;
+    if (e.key === 'Enter'){
+      if (text.trim().length > 0){
+        createTodo(text);
+        inputVal.current!.value = ''
+      }else {
+        alert('공백은 등록이 불가합니다!')
+      }
+    }
   }
 
   return (
@@ -17,6 +35,8 @@ const NewTodoForm = () => {
         className="new-todo-input"
         data-testid="new-todo-input"
         ref={inputVal}
+        placeholder="우측 버튼이나 엔터키를 눌려주세요!"
+        onKeyUp={keyUpHandler}
       />
 
       <button
