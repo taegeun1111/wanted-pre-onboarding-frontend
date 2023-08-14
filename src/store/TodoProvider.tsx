@@ -40,22 +40,17 @@ const TodoProvider: React.FC<{ children: ReactNode }> = ({children}) => {
     }
   }, [getToken]);
 
-
-  useEffect(()=>{
-    console.log(todos)
-  },[todos])
-
   const createTodo = async (text: string) => {
-    if (getToken !== null) {
+    if (getToken) {
       const textWithToken = {text, getToken};
       const result = await creatTodoApi(textWithToken);
-
       setTodos((prevState) => [...prevState, result]);
     }
   }
 
   const deleteTodo = async (id: number) => {
     if (getToken) {
+      console.log(getToken)
       await deleteTodoApi(id, getToken)
       await fetchTodos();
     }

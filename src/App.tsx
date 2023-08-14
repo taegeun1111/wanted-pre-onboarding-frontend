@@ -1,26 +1,31 @@
-import React from 'react';
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import SignIn from "./pages/SignIn";
-import SignUp from "./pages/SignUp";
-import Todo from "./pages/Todo";
-import NotFound from "./pages/NotFound";
-import TokenProvider from "./store/TokenProvider";
+import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
+import Todo from './pages/Todo';
+import NotFound from './pages/NotFound';
+import TokenProvider from './store/TokenProvider';
+import PrivateRoute from "./pages/PrivateRoute";
+import PublicRoute from "./pages/PublicRoute";
 
 function App() {
-
-  return (
+    return (
     <BrowserRouter>
       <TokenProvider>
         <Routes>
-          {/*로그인*/}
-          <Route path="/signin" element={<SignIn/>}/>
-          <Route path="/signup" element={<SignUp/>}/>
+          {/* login */}
+          <Route element={<PublicRoute/>}>
+            <Route path="/" element={<Navigate to="/signin" replace/>}/>
+            <Route path="/signin" element={<SignIn/>}/>
+            <Route path="/signup" element={<SignUp/>}/>
+          </Route>
 
-          {/*Todo*/}
-          <Route path="/todo" element={<Todo/>}/>
-
-          {/*404*/}
-          <Route path="/*" element={<NotFound/>}/>
+          {/* Todo */}
+          <Route element={<PrivateRoute/>}>
+            <Route path="/" element={<Navigate to="/todo" replace/>}/>
+            <Route path="/todo" element={<Todo/>}/>
+          </Route>
+          {/* 404 */}
+          <Route path="*" element={<NotFound/>}/>
         </Routes>
       </TokenProvider>
     </BrowserRouter>

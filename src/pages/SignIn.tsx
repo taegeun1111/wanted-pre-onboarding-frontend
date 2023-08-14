@@ -24,13 +24,10 @@ const SignIn = () => {
 
     signIn(userInfo)
       .then((data) => {
-        // console.log("로그인 완료 후 data :", data)
-        console.log(data.accessToken)
-        saveToken(data.accessToken);
-        alert("로그인이 완료되었습니다. 메인페이지로 이동합니다.")
-
-        console.log(getToken)
-        // navigation('/todos')
+        if (data) {
+          saveToken(data.accessToken);
+          alert("로그인이 완료되었습니다. 메인페이지로 이동합니다.")
+        }
       })
       .catch((error) => {
         console.log(error)

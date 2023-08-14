@@ -5,14 +5,16 @@ type Param = { email: string; password: string };
 type ResponseAuth = { accessToken: string };
 
 //로그인
-export const signIn = async (userInfo: Param): Promise<ResponseAuth> => {
+export const signIn = async (userInfo: Param): Promise<ResponseAuth | undefined> => {
   try {
     const response = await instance.post('/auth/signin', userInfo, {
       headers: {
         'Content-Type': 'application/json',
       },
     });
-    return {accessToken: response.data.access_token};
+    if (response.status === 200){
+      return {accessToken: response.data.access_token};
+    }
   } catch (error) {
     if (axios.isAxiosError(error)) {
       let message;
@@ -30,16 +32,13 @@ export const signIn = async (userInfo: Param): Promise<ResponseAuth> => {
 
 
 //회원가입
-export const signUp = async (userInfo: Param): Promise<any> => {
+export const signUp = async (userInfo: Param): Promise<void> => {
   try {
-    const response = await instance.post('/auth/signup', userInfo, {
+    await instance.post('/auth/signup', userInfo, {
       headers: {
         'Content-Type': 'application/json',
       },
     });
-
-    return response.data;
-
   } catch (error) {
     if (axios.isAxiosError(error)) {
       let message;
