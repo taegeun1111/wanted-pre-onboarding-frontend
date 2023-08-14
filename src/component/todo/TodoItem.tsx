@@ -17,7 +17,7 @@ const TodoItem: React.FC<{ todo: Todo }> = ({todo}) => {
           setClickEnabled(false);
           await deleteTodo(todo.id)
           setClickEnabled(true);
-        }catch (error){
+        } catch (error) {
           alert(error)
           setClickEnabled(true)
         }
@@ -60,6 +60,7 @@ const TodoItem: React.FC<{ todo: Todo }> = ({todo}) => {
   return (
     <li className="todo-list-wrapper">
       <div className="list-main-wrapper">
+        {/* check btn */}
         <input
           type="checkbox"
           className="check-box"
@@ -68,7 +69,7 @@ const TodoItem: React.FC<{ todo: Todo }> = ({todo}) => {
         />
         {!updateShow
           ?
-          <h1 className="todo-text">
+          <h1 className={todo.isCompleted ? "todo-not-completed" : "todo-completed"}>
             {todo.todo}
           </h1>
           :

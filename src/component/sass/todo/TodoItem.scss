@@ -17,11 +17,17 @@
       zoom: 1.5;
     }
 
-    .todo-text,
+    .todo-completed,
+    .todo-not-completed,
     .modify-input-text{
       width: 100%;
       padding-left: 0.5rem;
       font-size: 1.2rem;
+    }
+
+    .todo-not-completed{
+      text-decoration: line-through;
+      color: rgb(100,100,100);
     }
 
     .modify-input-text{
