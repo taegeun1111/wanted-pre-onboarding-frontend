@@ -3,6 +3,7 @@
 김태근
 
 ## 🌐 배포 사이트
+
 [TODOLIST](http://toodolist-onboarding.s3-website.ap-northeast-2.amazonaws.com)
 <br />
 <hr />
@@ -17,8 +18,8 @@ npm start
 
 ## 🧑‍💻구현 영상
 
-[회원가입,로그인,중복검사 (online-video-cutter.com).mp4](..%2F%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85%2C%EB%A1%9C%EA%B7%B8%EC%9D%B8%2C%EC%A4%91%EB%B3%B5%EA%B2%80%EC%82%AC%20%28online-video-cutter.com%29.mp4)
 
+https://github.com/taegeun1111/wanted-pre-onboarding-frontend/assets/122959190/d4658b3b-369c-42bc-b274-aa8f1827632a
 
 <br />
 <hr />
@@ -61,4 +62,4 @@ TypeScript와 React를 처음 사용하여 프로젝트를 진행하는 결정�
 <br />
 <hr />
 
-Gif와 트러블슈팅은 [Notion](https://wind-hardboard-c59.notion.site/wanted-pre-onboarding-frontend-daf01094f002467ea2c4d33ba4fec0cc?pvs=4)
+Gif와 트러블슈팅은 [여기](https://wind-hardboard-c59.notion.site/wanted-pre-onboarding-frontend-daf01094f002467ea2c4d33ba4fec0cc?pvs=4)
