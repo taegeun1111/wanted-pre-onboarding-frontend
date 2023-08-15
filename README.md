@@ -15,7 +15,9 @@ npm start
 
 ## 🧑‍💻구현 영상
 
-https://github.com/taegeun1111/wanted-pre-onboarding-frontend/assets/122959190/d4658b3b-369c-42bc-b274-aa8f1827632a
+
+https://github.com/taegeun1111/wanted-pre-onboarding-frontend/assets/122959190/c64f7568-3711-4125-86af-4e6802a2a7ab
+
 
 ## ⚒️ 사용 기술 및 라이브러리 목록
 - React + Typescript
