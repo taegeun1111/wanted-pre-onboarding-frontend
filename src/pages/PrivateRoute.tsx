@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import {TokenContext} from "../store/TokenContext";
 
-const Authorized = () => {
+const PrivateRoute = () => {
   const { isLogin } = useContext(TokenContext);
 
   if (!isLogin()) return <Navigate to="/signin" />;
@@ -10,4 +10,4 @@ const Authorized = () => {
   return <Outlet />;
 };
 
-export default Authorized;
+export default PrivateRoute;

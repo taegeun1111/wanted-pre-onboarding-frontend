@@ -1,46 +1,64 @@
-# Getting Started with Create React App
+# 원티드 프리온보딩 프론트엔드 - 선발 과제
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+김태근
 
-## Available Scripts
+## 🌐 배포 사이트
+[TODOLIST](http://toodolist-onboarding.s3-website.ap-northeast-2.amazonaws.com)
+<br />
+<hr />
 
-In the project directory, you can run:
+### 앱 실행
+```c
+npm install
+npm start
+```
+<br />
+<hr />
 
-### `npm start`
+## 🧑‍💻구현 영상
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[회원가입,로그인,중복검사 (online-video-cutter.com).mp4](..%2F%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85%2C%EB%A1%9C%EA%B7%B8%EC%9D%B8%2C%EC%A4%91%EB%B3%B5%EA%B2%80%EC%82%AC%20%28online-video-cutter.com%29.mp4)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+<br />
+<hr />
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## ⚒️ 사용 기술 및 라이브러리 목록
+- React + Typescript
+- React Router
+- Sass
+- Reset CSS
+- React icons
+- axios
+<br />
+<br />
+<hr />
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## ❗️Review
+**Keep**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- TypeScript 강의만 수강한 상태에서 처음으로 백엔드와 통신하면서 프로젝트를 진행했습니다. 타입을 정의하고 반환값의 타입을 지정함으로써 안정성을 크게 높일 수 있었습니다.
+- 오류가 발생했을 때 로그를 남겨 원인을 파악하고, 디버깅을 통해 문제를 해결하는 능력이 향상되었습니다.
+- Axios를 사용하여 통신을 하였는데, 기존에 사용하던 fetch보다 더 간편하게 요청을 처리할 수 있었습니다.
+- 'validation.ts' 파일을 활용하여 입력값 검증을 모듈화하고, 로그인 시 입력값을 재사용 가능한 모듈로 만들어 유용하게 사용했습니다.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Problem**
 
-### `npm run eject`
+- 삭제 버튼을 여러 번 클릭했을 때 오류가 발생했습니다.
+- 라우트 경로가 이상하게 동작하여 의도하지 않은 페이지로 이동되었습니다.
+- TypeScript의 Axios 모듈에서 반환되는 값의 타입을 지정해주기가 어려웠습니다..
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**Try**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- 구글링과 Youtube를 통해 모르는 지식에 대해 공부하였습니다.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+**느낀점**
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+TypeScript와 React를 처음 사용하여 프로젝트를 진행하는 결정은, 비록 시간이 좀 더 걸리더라도 새로운 학습 경험을 얻기 위한 것이었습니다. 이에 원티드 프리온보딩 사전 과제에 도전했습니다. 처음에 예상한 시간보다 훨씬 많은 시간을 투자해야 했지만, 결국은 이는 새로운 개념과 스킬을 습득하는 과정으로 이어졌습니다. TypeScript를 적극 활용하면서 변수, 함수 매개변수, 반환값 등에 명시적인 타입을 부여함으로써 코드의 안정성을 한층 강화할 수 있었습니다. 이로 인해 컴파일 단계에서 미리 다양한 버그를 검출하고 예방하는 데에 큰 도움이 되었습니다.  또한, TypeScript는 코드의 가독성과 유지보수성을 향상시켜 타입 정보가 함께 제공되면서 코드의 리팩토링이 더욱 수월해지고, 변경사항이 코드 전체에 미치는 영향을 빠르게 파악할 수 있었습니다. 이러한 장점들은 초기 시간 투자보다 더 큰 가치를 제공하게 되었습니다.
 
-## Learn More
+결과적으로, 프로젝트를 완성하는 데에 소요된 시간은 보다 길었지만, 이는 새로운 개념과 스킬을 습득하며 성장하는 기회로 이어졌습니다. TypeScript를 통해 구현한 안정성과 효율성은 앞으로 프로젝트에도 큰 도움이 될 것으로 기대됩니다.
+<br />
+<hr />
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Gif와 트러블슈팅은 [Notion](https://wind-hardboard-c59.notion.site/wanted-pre-onboarding-frontend-daf01094f002467ea2c4d33ba4fec0cc?pvs=4)
