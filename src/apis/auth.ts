@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {instance} from "./index";
+import { instance } from './index';
 
 type Param = { email: string; password: string };
 type ResponseAuth = { accessToken: string };
@@ -12,8 +12,8 @@ export const signIn = async (userInfo: Param): Promise<ResponseAuth | undefined>
         'Content-Type': 'application/json',
       },
     });
-    if (response.status === 200){
-      return {accessToken: response.data.access_token};
+    if (response.status === 200) {
+      return { accessToken: response.data.access_token };
     }
   } catch (error) {
     if (axios.isAxiosError(error)) {
@@ -25,11 +25,10 @@ export const signIn = async (userInfo: Param): Promise<ResponseAuth | undefined>
       }
       throw new Error(message);
     } else {
-      throw new Error("알 수 없는 에러 발생");
+      throw new Error('알 수 없는 에러 발생');
     }
   }
 };
-
 
 //회원가입
 export const signUp = async (userInfo: Param): Promise<void> => {
@@ -48,9 +47,7 @@ export const signUp = async (userInfo: Param): Promise<void> => {
       } else {
         message = error.message;
       }
-      throw new Error(message)
+      throw new Error(message);
     }
   }
 };
-
-

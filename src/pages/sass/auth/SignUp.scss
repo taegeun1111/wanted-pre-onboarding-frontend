@@ -13,7 +13,6 @@
   }
 
   .signUp-from {
-
     //로그인 section
     .signUp-btn-wrapper {
       display: flex;
@@ -21,14 +20,13 @@
       flex-direction: column;
 
       .signUp-activate-btn,
-      .disable{
+      .disable {
         width: 100%;
         font-size: 1rem;
         padding: 0.5rem 1rem;
         border: none;
         border-radius: 0.3rem;
         margin-bottom: 1rem;
-
       }
 
       .signUp-activate-btn {
@@ -36,12 +34,12 @@
         color: white;
         cursor: pointer;
       }
-      .disable{
-        background-color: rgb(200,200,200);
+      .disable {
+        background-color: rgb(200, 200, 200);
         color: white;
       }
 
-      .link-btn{
+      .link-btn {
         font-size: 0.9rem;
         text-decoration: none;
         color: #003af5;

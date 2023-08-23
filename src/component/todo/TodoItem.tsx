@@ -1,61 +1,62 @@
-import React, {useContext, useRef, useState} from 'react';
-import "../sass/todo/TodoItem.scss"
-import {TodoContext} from "../../store/TodoContext";
-import Todo from "../../models/TodoData";
+import React, { useContext, useRef, useState } from 'react';
+import '../sass/todo/TodoItem.scss';
+import { TodoContext } from '../../store/TodoContext';
+import Todo from '../../models/TodoData';
 
-const TodoItem: React.FC<{ todo: Todo }> = ({todo}) => {
+const TodoItem: React.FC<{ todo: Todo }> = ({ todo }) => {
   const [updateShow, setUpdateShow] = useState(false);
   const [clickEnabled, setClickEnabled] = useState(true);
-  const {deleteTodo, updateTodo} = useContext(TodoContext);
+  const { deleteTodo, updateTodo } = useContext(TodoContext);
   const inputVal = useRef<HTMLInputElement>(null);
 
   const todoDeleteHandler = async () => {
     if (clickEnabled) {
-      const confirmDelete = window.confirm("정말 삭제하시겠습니까?")
+      const confirmDelete = window.confirm('정말 삭제하시겠습니까?');
       if (confirmDelete) {
         try {
           setClickEnabled(false);
-          await deleteTodo(todo.id)
+          await deleteTodo(todo.id);
           setClickEnabled(true);
         } catch (error) {
-          alert(error)
-          setClickEnabled(true)
+          alert(error);
+          setClickEnabled(true);
         }
-
       }
     }
-  }
+  };
 
   const checkedHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     updateTodo({
-      ...todo, isCompleted: e.target.checked
-    })
-  }
+      ...todo,
+      isCompleted: e.target.checked,
+    });
+  };
 
   const updateShowHandler = () => {
     setUpdateShow(!updateShow);
-  }
+  };
 
   const handleUpdate = () => {
     const updateText = inputVal.current!.value;
     if (updateText.trim().length > 0) {
       updateTodo({
-        ...todo, todo: updateText
-      })
-      alert('수정이 완료되었습니다.')
+        ...todo,
+        todo: updateText,
+      });
+      alert('수정이 완료되었습니다.');
       setUpdateShow(!updateShow);
     } else {
-      alert('공백은 불가합니다.')
+      alert('공백은 불가합니다.');
     }
-  }
+  };
 
   const updateTodoHandler = () => {
-    handleUpdate()
-  }
+    handleUpdate();
+  };
 
   const keyUpHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') handleUpdate()
-  }
+    if (e.key === 'Enter') handleUpdate();
+  };
 
   return (
     <li className="todo-list-wrapper">
@@ -67,12 +68,11 @@ const TodoItem: React.FC<{ todo: Todo }> = ({todo}) => {
           defaultChecked={todo.isCompleted}
           onChange={checkedHandler}
         />
-        {!updateShow
-          ?
-          <h1 className={todo.isCompleted ? "todo-not-completed" : "todo-completed"}>
+        {!updateShow ? (
+          <h1 className={todo.isCompleted ? 'todo-not-completed' : 'todo-completed'}>
             {todo.todo}
           </h1>
-          :
+        ) : (
           <input
             className="modify-input-text"
             type="text"
@@ -82,12 +82,11 @@ const TodoItem: React.FC<{ todo: Todo }> = ({todo}) => {
             ref={inputVal}
             autoFocus={true}
           />
-        }
-
+        )}
       </div>
 
       {/* 기존 list section */}
-      {!updateShow &&
+      {!updateShow && (
         <div className="list-edit-wrapper">
           <button
             type="button"
@@ -108,10 +107,10 @@ const TodoItem: React.FC<{ todo: Todo }> = ({todo}) => {
             삭제
           </button>
         </div>
-      }
+      )}
 
       {/* 수정 list section */}
-      {updateShow &&
+      {updateShow && (
         <div className="list-edit-wrapper">
           <button
             type="button"
@@ -131,7 +130,7 @@ const TodoItem: React.FC<{ todo: Todo }> = ({todo}) => {
             취소
           </button>
         </div>
-      }
+      )}
     </li>
   );
 };

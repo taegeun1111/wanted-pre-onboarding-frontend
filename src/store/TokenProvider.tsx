@@ -1,10 +1,10 @@
-import React, {ReactNode} from "react";
-import {useNavigate} from "react-router-dom";
-import {TokenContextObj, TokenContext} from "./TokenContext";
+import React, { ReactNode } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { TokenContextObj, TokenContext } from './TokenContext';
 
 const TOKEN_KEY = 'accessToken';
 
-const TokenProvider: React.FC<{ children: ReactNode }> = ({children}) => {
+const TokenProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const navigation = useNavigate();
   const getToken = localStorage.getItem(TOKEN_KEY);
 
@@ -23,20 +23,14 @@ const TokenProvider: React.FC<{ children: ReactNode }> = ({children}) => {
     return result;
   };
 
-
   const TokenContextValue: TokenContextObj = {
     getToken,
     saveToken,
     removeToken,
-    isLogin
-  }
+    isLogin,
+  };
 
-
-  return (
-    <TokenContext.Provider value={TokenContextValue}>
-      {children}
-    </TokenContext.Provider>
-  );
+  return <TokenContext.Provider value={TokenContextValue}>{children}</TokenContext.Provider>;
 };
 
 export default TokenProvider;

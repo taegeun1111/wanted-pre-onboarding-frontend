@@ -1,24 +1,24 @@
-import React, {ReactNode, useContext, useEffect, useState} from "react";
-import {TodoContextObj, TodoContext} from "./TodoContext";
-import {TokenContext} from "./TokenContext";
-import Todo from "../models/TodoData";
+import React, { ReactNode, useContext, useEffect, useState } from 'react';
+import { TodoContextObj, TodoContext } from './TodoContext';
+import { TokenContext } from './TokenContext';
+import Todo from '../models/TodoData';
 import {
   creatTodo as creatTodoApi,
   deleteTodo as deleteTodoApi,
   getTodos as getTodosApi,
-  updateTodo as updateTodoApi
-} from "../apis/todo";
+  updateTodo as updateTodoApi,
+} from '../apis/todo';
 import axios from 'axios';
 
-const TodoProvider: React.FC<{ children: ReactNode }> = ({children}) => {
-  const {getToken} = useContext(TokenContext);
-  const [todos, setTodos] = useState<Todo[]>([])
+const TodoProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const { getToken } = useContext(TokenContext);
+  const [todos, setTodos] = useState<Todo[]>([]);
 
   const fetchTodos = async () => {
     try {
-      if (getToken){
-      const data = await getTodosApi(getToken);
-      setTodos(data);
+      if (getToken) {
+        const data = await getTodosApi(getToken);
+        setTodos(data);
       }
     } catch (error) {
       alert(error);
@@ -40,7 +40,7 @@ const TodoProvider: React.FC<{ children: ReactNode }> = ({children}) => {
             } else {
               message = error.message;
             }
-            throw new Error(message)
+            throw new Error(message);
           }
         }
       };
@@ -51,45 +51,41 @@ const TodoProvider: React.FC<{ children: ReactNode }> = ({children}) => {
 
   const createTodo = async (text: string) => {
     if (getToken) {
-      const textWithToken = {text, getToken};
+      const textWithToken = { text, getToken };
       const result = await creatTodoApi(textWithToken);
-      setTodos((prevState) => [...prevState, result]);
+      setTodos(prevState => [...prevState, result]);
     }
-  }
+  };
 
   const deleteTodo = async (id: number) => {
     if (getToken) {
-      await deleteTodoApi(id, getToken)
+      await deleteTodoApi(id, getToken);
       await fetchTodos();
     }
-  }
+  };
 
-  const updateTodo = async (todo : Todo) =>{
-    if (getToken){
+  const updateTodo = async (todo: Todo) => {
+    if (getToken) {
       const updateData = {
-        id : todo.id,
-        todo : todo.todo,
-        isCompleted : todo.isCompleted,
-        token : getToken
-      }
+        id: todo.id,
+        todo: todo.todo,
+        isCompleted: todo.isCompleted,
+        token: getToken,
+      };
 
-      await updateTodoApi(updateData)
+      await updateTodoApi(updateData);
       await fetchTodos();
     }
-  }
+  };
 
   const TodoContextValue: TodoContextObj = {
     todos,
     createTodo,
     deleteTodo,
-    updateTodo
-  }
+    updateTodo,
+  };
 
-  return (
-    <TodoContext.Provider value={TodoContextValue}>
-      {children}
-    </TodoContext.Provider>
-  )
-}
+  return <TodoContext.Provider value={TodoContextValue}>{children}</TodoContext.Provider>;
+};
 
 export default TodoProvider;

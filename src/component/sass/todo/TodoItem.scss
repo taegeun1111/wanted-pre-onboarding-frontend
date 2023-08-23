@@ -19,24 +19,23 @@
 
     .todo-completed,
     .todo-not-completed,
-    .modify-input-text{
+    .modify-input-text {
       width: 100%;
       padding-left: 0.5rem;
       font-size: 1.2rem;
     }
 
-    .todo-not-completed{
+    .todo-not-completed {
       text-decoration: line-through;
-      color: rgb(100,100,100);
+      color: rgb(100, 100, 100);
     }
 
-    .modify-input-text{
-      font-family: 'Noto Sans KR','sans-serif';
+    .modify-input-text {
+      font-family: 'Noto Sans KR', 'sans-serif';
       outline: none;
       border: none;
-      border-bottom: 1px solid rgb(200,200,200);
+      border-bottom: 1px solid rgb(200, 200, 200);
     }
-
   }
 
   .list-edit-wrapper {
@@ -49,7 +48,7 @@
     .delete-btn {
       width: 48%;
       height: 100%;
-      border : none;
+      border: none;
       cursor: pointer;
       color: white;
       border-radius: 0.3rem;
@@ -61,8 +60,7 @@
     }
 
     .delete-btn {
-      background-color: #FF6347FF;
+      background-color: #ff6347ff;
     }
-
   }
 }

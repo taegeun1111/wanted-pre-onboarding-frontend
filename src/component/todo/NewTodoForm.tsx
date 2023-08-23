@@ -1,30 +1,32 @@
-import React, {useContext, useRef} from 'react';
-import '../sass/todo/NewTodoForm.scss'
-import {BsPlusLg} from "react-icons/bs"
-import {TodoContext} from "../../store/TodoContext";
+import React, { useContext, useRef } from 'react';
+import '../sass/todo/NewTodoForm.scss';
+import { BsPlusLg } from 'react-icons/bs';
+import { TodoContext } from '../../store/TodoContext';
 
 const NewTodoForm = () => {
-  const {createTodo} = useContext(TodoContext);
+  const { createTodo } = useContext(TodoContext);
   const inputVal = useRef<HTMLInputElement>(null);
 
   const handleCreate = () => {
     const text = inputVal.current!.value;
-    if (text.trim().length > 0){
-      alert('등록완료')
+    if (text.trim().length > 0) {
+      alert('등록완료');
       createTodo(text);
-      inputVal.current!.value = ''
-    }else {
-      alert('공백은 등록이 불가합니다!')
+      inputVal.current!.value = '';
+    } else {
+      alert('공백은 등록이 불가합니다!');
     }
-  }
+  };
 
   const creatNewTodoHandler = () => {
-    handleCreate()
-  }
+    handleCreate();
+  };
 
-  const keyUpHandler = (e:React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {handleCreate()}
-  }
+  const keyUpHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleCreate();
+    }
+  };
 
   return (
     <div className="new-todo-wrapper">
@@ -41,7 +43,7 @@ const NewTodoForm = () => {
         data-testid="new-todo-add-button"
         onClick={creatNewTodoHandler}
       >
-        <BsPlusLg/>
+        <BsPlusLg />
       </button>
     </div>
   );

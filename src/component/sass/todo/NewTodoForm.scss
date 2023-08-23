@@ -1,12 +1,12 @@
-.new-todo-wrapper{
+.new-todo-wrapper {
   display: flex;
   justify-content: space-between;
   //width: 100%;
-  border: 1px solid rgb(200,200,200);
+  border: 1px solid rgb(200, 200, 200);
   border-radius: 0.5rem;
   padding: 0.3rem 0.5rem;
 
-  .new-todo-input{
+  .new-todo-input {
     width: 90%;
     font-size: 1.3rem;
     padding: 0.5rem;
@@ -14,7 +14,7 @@
     outline: none;
   }
 
-  .new-todo-btn{
+  .new-todo-btn {
     width: 9%;
     display: flex;
     align-items: center;
@@ -25,8 +25,8 @@
     cursor: pointer;
     background-color: white;
   }
-  .new-todo-btn:hover{
-    background-color: rgb(200,200,200);
+  .new-todo-btn:hover {
+    background-color: rgb(200, 200, 200);
     color: white;
     transition: 0.5s;
   }

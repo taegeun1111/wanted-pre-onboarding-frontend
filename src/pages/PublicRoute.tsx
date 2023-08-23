@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
-import {TokenContext} from "../store/TokenContext";
+import { TokenContext } from '../store/TokenContext';
 
 const PublicRoute = () => {
   const { isLogin } = useContext(TokenContext);

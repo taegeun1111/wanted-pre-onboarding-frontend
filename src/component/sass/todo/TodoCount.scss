@@ -1,16 +1,16 @@
-.count-wrapper{
+.count-wrapper {
   display: flex;
   align-items: center;
 
   //title,count common section
   .current-todo-title,
-  .current-todo-count{
+  .current-todo-count {
     font-size: 1.2rem;
   }
-  .current-todo-title{
+  .current-todo-title {
   }
 
-  .current-todo-count{
+  .current-todo-count {
     padding-left: 0.3rem;
   }
 }
