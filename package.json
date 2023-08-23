@@ -27,6 +27,7 @@
   "scripts": {
     "format": "npx prettier --write --cache .",
     "lint": "eslint --cache .",
+    "postinstall": "husky install",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -49,5 +50,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "husky": "^8.0.3"
   }
 }
