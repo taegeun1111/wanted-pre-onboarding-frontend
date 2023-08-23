@@ -21,7 +21,9 @@ const SignIn = () => {
     const userInfo = { email: email, password: password };
 
     e.preventDefault();
-
+    console.log(userInfo)
+    var test = 1;
+    console.log(test)
     signIn(userInfo)
       .then(data => {
         if (data) {

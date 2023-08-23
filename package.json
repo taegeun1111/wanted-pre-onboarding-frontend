@@ -26,6 +26,7 @@
   },
   "scripts": {
     "format": "npx prettier --write --cache .",
+    "lint": "eslint --cache .",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
